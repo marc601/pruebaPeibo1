@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 require_once "Task.php";
 
 const COLOR_GREEN = "[32m";
