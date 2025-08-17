@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Gestor de Tareas</title>
 </head>
+
 <body>
     <h1>Demostración del Gestor de Tareas</h1>
 
@@ -28,10 +30,11 @@
     ?>
     <p><strong>Datos de la tarea creada (antes de agregarla al gestor):</strong></p>
     <pre><?php print_r($task->toArray()); ?></pre>
-    <p>Se observa que el registro tiene asignado el Id `null`. Al momento de agregarlo a la colección se le asignará un ID.</p>
+    <p>Se observa que el registro tiene asignado el Id `null`. Al momento de agregarlo a la colección se le asignará un
+        ID.</p>
 
     <?php $taskManager->addTask($task); ?>
-    
+
     <h2>2. Agregar la tarea al gestor</h2>
     <p>Después de agregar la tarea, el gestor le asigna un ID. Aquí está la lista de todas las tareas:</p>
     <pre><?php print_r($taskManager->getAllTasks()); ?></pre>
@@ -44,12 +47,13 @@
     <p>Estatus inicial: <strong><?php echo $recoverTask->getStatusString(); ?></strong></p>
     <pre><?php print_r($recoverTask); ?></pre>
 
-    <p>Podemos cambiar el estatus a "Realizado":</p>
+    <p>Podemos cambiar el estatus a "Realizado", con el méclear
+        todo markDone():</p>
     <?php $recoverTask->markDone(); ?>
     <p>Nuevo estatus: <strong><?php echo $recoverTask->getStatusString(); ?></strong></p>
     <pre><?php print_r($recoverTask); ?></pre>
 
-    <p>Y también podemos cambiar el estatus a "En progreso":</p>
+    <p>Y también podemos cambiar el estatus a "En progreso", con el método markInProgress():</p>
     <?php $recoverTask->markInProgress(); ?>
     <p>Estatus final: <strong><?php echo $recoverTask->getStatusString(); ?></strong></p>
     <pre><?php print_r($recoverTask); ?></pre>
@@ -80,7 +84,7 @@
     <p>Total de tareas: <strong><?php echo $taskManager->countTasks(); ?></strong></p>
 
     <hr>
-    
+
     <h2>5. Filtrado de tareas por estatus</h2>
     <p>Podemos ver la lista de todos los estatus disponibles:</p>
     <pre><?php print_r(Task::$statuses); ?></pre>
@@ -95,4 +99,5 @@
     <pre><?php print_r($taskManager->getTasksByStatus(Task::STATUS_IN_PROGRESS)); ?></pre>
 
 </body>
+
 </html>
