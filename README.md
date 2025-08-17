@@ -4,7 +4,7 @@ Prueba rapida de app para tareas.
 
 # Pre-requisitos 📋
 
-Esta app requiere de php 8.4 y apache2 
+Esta app requiere de php 8.4
 
 ### Instalación 🔧
 
