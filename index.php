@@ -47,8 +47,7 @@
     <p>Estatus inicial: <strong><?php echo $recoverTask->getStatusString(); ?></strong></p>
     <pre><?php print_r($recoverTask); ?></pre>
 
-    <p>Podemos cambiar el estatus a "Realizado", con el méclear
-        todo markDone():</p>
+    <p>Podemos cambiar el estatus a "Realizado", con el método markDone():</p>
     <?php $recoverTask->markDone(); ?>
     <p>Nuevo estatus: <strong><?php echo $recoverTask->getStatusString(); ?></strong></p>
     <pre><?php print_r($recoverTask); ?></pre>
