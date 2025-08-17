@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 require_once "TaskManager.php";
 require_once "Task.php";
 
@@ -70,7 +72,7 @@ runTest("4.- Método getTaskById() con ID inexistente", function () {
 runTest("5.- Método toArray()", function () {
     $taskManager = new TaskManager();
     $task = new Task();
-    $task->setTittle("Test toArray");
+    $task->setTitle("Test toArray");
     $task->setDescription("Description");
     $task->setStatus(Task::STATUS_PENDING);
     $taskManager->addTask($task);
@@ -84,7 +86,7 @@ runTest("5.- Método toArray()", function () {
     if (
         $task->getStatus() === Task::STATUS_PENDING &&
         $task->getDescription() == $expected['description'] &&
-        $task->getTittle() == $expected['tittle']
+        $task->getTitle() == $expected['tittle']
     ) {
         $isValid = true;
     }

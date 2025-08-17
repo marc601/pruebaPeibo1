@@ -1,6 +1,5 @@
 <?php
-
-
+declare(strict_types=1);
 class TaskManager
 {
     private array $tasks = [];
@@ -64,4 +63,3 @@ class TaskManager
         return $tasks;
     }
 }
-

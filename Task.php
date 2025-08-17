@@ -1,44 +1,48 @@
 <?php
 
+declare(strict_types=1);
+
 class Task
 {
     private ?int $id = null;
-    private ?string $tittle = null;
+    private ?string $title = null;
     private string $description;
     private ?int $status = null;
 
-    const STATUS_PENDING = 1;
-    const STATUS_IN_PROGRESS = 2;
-    const STATUS_DONE = 3;
+    public const STATUS_PENDING = 1;
+    public const STATUS_IN_PROGRESS = 2;
+    public const STATUS_DONE = 3;
 
     public static array $statuses = [
         self::STATUS_PENDING => 'Pendiente',
         self::STATUS_IN_PROGRESS => 'En progreso',
-        self::STATUS_DONE => 'Realizado'
+        self::STATUS_DONE => 'Realizado',
     ];
+
     public function __toString(): string
     {
-        $id = $this->id ?? 'No defino';
-        return "Id: " . $id . " Titulo: " . $this->tittle . " Descripcion: " . $this->description . " Estatus: " . $this->getStatusString();
+        $id = $this->id ?? 'No definido';
+        return 'Id: ' . $id . ' Titulo: ' . $this->title . ' Descripcion: ' . $this->description . ' Estatus: ' . $this->getStatusString();
     }
 
     public function getId(): ?int
     {
         return $this->id;
     }
+
     public function setId(int $id): void
     {
         $this->id = $id;
     }
 
-    public function getTittle(): ?string
+    public function getTitle(): ?string
     {
-        return $this->tittle;
+        return $this->title;
     }
 
-    public function setTittle(?string $tittle): void
+    public function setTitle(?string $title): void
     {
-        $this->tittle = $tittle;
+        $this->title = $title;
     }
 
     public function getDescription(): string
@@ -58,24 +62,25 @@ class Task
 
     public function setStatus(?int $status): void
     {
-        $this->validataStatus($status);
+        $this->validateStatus($status);
         $this->status = $status;
     }
 
-    protected function validataStatus(?int $status)
+    protected function validateStatus(?int $status): void
     {
-
-        if (!$status) {
-            throw new Exception("Indique almenos un estatus");
+        if ($status === null) {
+            throw new Exception('Indique almenos un estatus');
         }
         if (!in_array($status, array_keys(self::$statuses))) {
-            throw new Exception("El estatus : " . $status . " es invalido");
+            throw new Exception('El estatus : ' . $status . ' es invalido');
         }
     }
+
     public function markInProgress(): void
     {
         $this->setStatus(self::STATUS_IN_PROGRESS);
     }
+
     public function markDone(): void
     {
         $this->setStatus(self::STATUS_DONE);
@@ -83,20 +88,18 @@ class Task
 
     public function getStatusString(): string
     {
-        $statusString = '';
-        $this->validataStatus($this->getStatus());
-
-        if ($this->getStatus()) {
-            $statusString = self::$statuses[$this->getStatus()];
+        if ($this->getStatus() === null) {
+            return '';
         }
-        return $statusString;
+        $this->validateStatus($this->getStatus());
+        return self::$statuses[$this->getStatus()];
     }
 
     public function toArray(): array
     {
         return [
             'id' => $this->id,
-            'tittle' => $this->tittle,
+            'title' => $this->title,
             'description' => $this->description,
             'status' => $this->status,
         ];
@@ -106,7 +109,7 @@ class Task
     {
         $task = new self();
         $task->setId($data['id'] ?? 0);
-        $task->setTittle($data['tittle'] ?? null);
+        $task->setTitle($data['title'] ?? null);
         $task->setDescription($data['description'] ?? '');
         $task->setStatus($data['status'] ?? self::STATUS_PENDING);
         return $task;
