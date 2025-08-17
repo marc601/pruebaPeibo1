@@ -12,7 +12,7 @@ Clona el proyecto en tu máquina.
 
 ## Ejecutando las pruebas ⚙️
 
-Las pruebas son basicas y sin el uso de algún marco, estan identificadas por el subijo Test (TaskTest, TaskManagerTest), puedes ejcutarlas desdeconsola  mediante php
+Las pruebas son basicas y sin el uso de algún marco, estan identificadas por el subfijo Test (TaskTest, TaskManagerTest), puedes ejcutarlas desdeconsola  mediante php
 ejemplo. 
 >php TaskTest.php
 
